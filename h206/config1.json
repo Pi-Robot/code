@@ -1,0 +1,43 @@
+[
+{
+ "name":"in1",   
+ "pin":14,
+ "io":"out",
+ "control":"right1"
+},
+{
+ "name":"in2",
+ "pin":15,
+ "io":"out",
+ "control":"right2"
+},
+{
+ "name":"ena",
+ "pin":18,
+ "io":"pwm",
+ "control":"rightPower"
+},
+{
+ "name":"in3",   
+ "pin":7,
+ "io":"out",
+ "control":"left1"
+},
+{
+ "name":"in4",
+ "pin":8,
+ "io":"out",
+ "control":"left2"
+},
+{
+ "name":"enb",
+ "pin":25,
+ "io":"pwm",
+ "control":"leftPower"
+},
+{
+ "name":"h206left",
+ "pin":4,
+ "io":"in"
+}
+]

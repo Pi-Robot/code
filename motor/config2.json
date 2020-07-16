@@ -1,0 +1,17 @@
+[
+{
+ "name":"in1",   
+ "pin":14,
+ "io":"out"
+},
+{
+ "name":"in2",
+ "pin":15,
+ "io":"out"
+},
+{
+ "name":"ena",
+ "pin":18,
+ "io":"pwm"
+}
+]

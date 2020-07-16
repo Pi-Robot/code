@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Car remote control</title>   
+    <style>
+    .pieContainer {
+      height: 330px;
+      position: relative;
+      margin-left:50%;
+      left:-165px;
+    }
+    
+    .pieBackground {
+      position: absolute;
+      width: 330px;
+      height: 330px;
+      border-radius: 100%;
+      box-shadow: 0px 0px 20px rgba(0,0,0,0.8);
+    }       
+    
+    .innerCircle {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background-color: #444;
+      border-radius: 100%;
+      top: 90px;
+      left: 90px; 
+      box-shadow: 0px 0px 20px rgba(0,0,0,0.9) inset;
+      color: white;
+    }
+    
+    .innerCircle .content {
+      position: absolute;
+      display: block;
+      width: 120px;
+      top: 68px;
+      left: 18px;
+      text-align: center;
+      font-size: 18px;
+    }
+    
+    .circleContainer{
+      position:absolute;
+      width:330px;
+      height:330px;  
+      clip-path: circle(165px);          
+      }
+      
+    .segment{
+      position:relative;
+      width:330px;
+      height:330px;  
+      background-color: #900;           
+      clip-path: polygon(97px 0px, 50% 50%, 233px 0px);         
+    }
+   
+    .turn1{transform: rotate(45deg);}
+    .turn2{transform: rotate(90deg);}
+    .turn3{transform: rotate(135deg);}
+    .turn4{transform: rotate(180deg);}
+    .turn5{transform: rotate(225deg);}
+    .turn6{transform: rotate(270deg);}
+    .turn7{transform: rotate(315deg);}
+    
+    .segmentColor1{background-color:#090;} /*0*/
+    .segmentColor2{background-color:#790;}
+    .segmentColor3{background-color:#990;} /*90*/
+    .segmentColor4{background-color:#950;}
+    .segmentColor5{background-color:#900;} /*180 */
+    .segmentColor6{background-color:#709;}
+    .segmentColor7{background-color:#009;} /*270 */
+    .segmentColor8{background-color:#099;}
+  
+    
+    </style>
+    <script>
+    function move(left, right){
+      window.location.href='/move/'+left+'/'+right;
+    }
+    function  getPosition(e){
+      var rect = e.target.getBoundingClientRect();
+      var radius = 165;
+      var x = (e.clientX - rect.left)-radius;
+      var y = -((e.clientY - rect.top)-radius);
+      var angle = Math.atan2(y,x) ; // rad
+      var left = Math.sin(angle + Math.PI/4); // +45° +Math.PI/4
+      var right = -Math.cos(angle + Math.PI/4); // 
+      var corr = 1 + 0.35 * Math.cos(4*angle);
+      var power = corr * 100 * Math.sqrt(x * x + y * y) / radius;      
+      move(Math.floor(power*left),Math.floor(power*right));            
+    }
+    </script>
+         
+  </head>
+  <body>
+	 
+    <div class="pieContainer">
+           
+      <div class="circleContainer"><div class="segment segmentColor1" ></div></div>
+      <div class="circleContainer turn1"><div class="segment segmentColor2"></div></div>
+      <div class="circleContainer turn2"><div class="segment segmentColor3"></div></div>
+      <div class="circleContainer turn3"><div class="segment segmentColor4"></div></div>
+      <div class="circleContainer turn4"><div class="segment segmentColor5"></div></div>
+      <div class="circleContainer turn5"><div class="segment segmentColor6"></div></div>
+      <div class="circleContainer turn6"><div class="segment segmentColor7"></div></div>
+      <div class="circleContainer turn7"><div class="segment segmentColor8"></div></div>
+      
+      <div class="pieBackground" onclick="getPosition(event)"></div> 
+ 
+      <div class="innerCircle" onclick="move(0,0);">
+         <div class="content"><b>STOP</b></div>
+      </div>
+                
+    </div>
+    
+  </body>
+</html>
+

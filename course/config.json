@@ -1,0 +1,11 @@
+[{
+ "name":"led1",   
+ "pin":2,
+ "io":"out"
+},
+{
+ "name":"switch",
+ "pin":4,
+ "io":"in"
+}
+]
