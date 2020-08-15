@@ -1,5 +1,4 @@
 # light LED by switch
-import RPi.GPIO as GPIO
 import pin
 
 # use "pin module" to load and configure all pins
@@ -21,5 +20,5 @@ except KeyboardInterrupt:
     print("End")
 finally:
     # reset the GPIOs
-    GPIO.cleanup()
+    pin.cleanup()
     

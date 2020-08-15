@@ -15,11 +15,11 @@ velocity = 0
 lastVelocity = 0
 lastTime = 0
 count=0
-setPoint=0.01 # set the desired value here
+setPoint=0.0007 # set the desired value here
 
 def controller(setPoint):
     global iPart, ifactor, pFactor, velocity, lastVelocity
-    workingPoint = (setPoint / 0.12) * 100 # max speed = 0.12
+    workingPoint = (setPoint / 0.11) * 100 # max speed = 0.12
     if lastVelocity == velocity:
         velocity = 0
     delta = setPoint - velocity
@@ -46,7 +46,7 @@ GPIO.add_event_detect(4, GPIO.BOTH, callback=counter)
 
 i=0
 while i<1000:
-    time.sleep(0.005)
+    time.sleep(0.001)
     left, delta = controller(setPoint) # setpoint
     control.move(left,0)
     count+=1
@@ -56,4 +56,4 @@ while i<1000:
     i+=1
 
 
-GPIO.cleanup()
+pin.cleanup()

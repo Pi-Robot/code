@@ -1,30 +1,27 @@
-[
 {
- "name":"1N1",   
+"1N1":{ 
  "pin":5,
  "io":"out",
- "stepperID":1,
- "stepper1N":1
+ "stepperID":0,
+ "stepper1N":0
 },
-{
- "name":"1N2",
+"1N2":{ 
  "pin":6,
  "io":"out",
- "stepperID":1,
- "stepper1N":2
+ "stepperID":0,
+ "stepper1N":1
 },
-{
- "name":"1N3",
+"1N3":{
  "pin":13,
  "io":"out",
- "stepperID":1,
- "stepper1N":3
+ "stepperID":0,
+ "stepper1N":2
 },
-{
- "name":"1N4",   
+"1N4":{ 
  "pin":19,
  "io":"out",
- "stepperID":1,
- "stepper1N":4
+ "stepperID":0,
+ "stepper1N":3
 }
-]
+}
+

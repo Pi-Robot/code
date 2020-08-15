@@ -1,59 +1,51 @@
-[
 {
- "name":"0-1N1",   
+"0-1N1":{
  "pin":22,
  "io":"out",
  "stepperID":0,
  "stepper1N":0
 },
-{
- "name":"0-1N2",
+"0-1N2":{ 
  "pin":10,
  "io":"out",
  "stepperID":0,
  "stepper1N":1
 },
-{
- "name":"0-1N3",
+"0-1N3":{ 
  "pin":9,
  "io":"out",
  "stepperID":0,
  "stepper1N":2
 },
-{
- "name":"0-1N4",   
+"0-1N4":{ 
  "pin":11,
  "io":"out",
  "stepperID":0,
  "stepper1N":3
 },
 
-{
- "name":"1-1N1",   
+"1-1N1":{ 
  "pin":5,
  "io":"out",
  "stepperID":1,
  "stepper1N":0
 },
-{
- "name":"1-1N2",
+"1-1N2":{ 
  "pin":6,
  "io":"out",
  "stepperID":1,
  "stepper1N":1
 },
-{
- "name":"1-1N3",
+"1-1N3":{
  "pin":13,
  "io":"out",
  "stepperID":1,
  "stepper1N":2
 },
-{
- "name":"1-1N4",   
+"1-1N4":{ 
  "pin":19,
  "io":"out",
  "stepperID":1,
  "stepper1N":3
 }
-]
+}

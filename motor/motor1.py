@@ -1,5 +1,4 @@
 # first motor test
-import RPi.GPIO as GPIO
 import pin
 import time
 
@@ -23,6 +22,6 @@ pin.Out("ena",0)
 print("stop")
 
 # reset the GPIOs
-GPIO.cleanup()
+pin.cleanup()
     
 

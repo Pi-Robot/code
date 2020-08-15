@@ -18,7 +18,7 @@ class RobotThread (threading.Thread):
     def setRobotPosition(self, delta):
         pointer=0
         while pointer < 100000:        
-            time.sleep(0.005)
+            time.sleep(0.002)
             pointer += delta        
             for i in range(6):
                 if self.stepper.motor[i]:               
@@ -26,7 +26,7 @@ class RobotThread (threading.Thread):
 
 
 def start(stepper,time):
-    delta=(0.005*100000)/time    
+    delta=(0.002*100000)/time    
     # start all motors with a way > 0
     global thread1
     thread1 = RobotThread("Robot-Thread", stepper, delta)

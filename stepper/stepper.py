@@ -5,8 +5,8 @@ import time
 
 stepperCount = 6 # max number of steppers
 stepper = [[] for f in range(stepperCount)] # contains the names of the pins
-state = [ [] for f in range(stepperCount)]
-position = [ [] for f in range(stepperCount)]
+state = [ 0 for f in range(stepperCount)]
+position = [ 0 for f in range(stepperCount)]
 
 # open the file
 def load(filename):
@@ -24,21 +24,21 @@ def load(filename):
     global state
     global position
         
-    for item in items:
-        pin = item["name"]
+    for name,item in items.items():    
         # store the items by name        
-        if(item["stepperID"] and item["stepper1N"]):
-            ID=item["stepperID"]
+        if((item["stepperID"] or item["stepperID"]==0)\
+           and (item["stepper1N"] or item["stepper1N"]==0)):
+            ID = item["stepperID"]
             n = item["stepper1N"]            
             try:        
-                stepper[ID][n]=pin
+                stepper[ID][n]=name
             except:
                 # initialize               
                 stepper[ID]=[ [] for f in range(5)]
-                stepper[ID][n]=pin
+                stepper[ID][n]=name
                 state[ID]=0 # initial state
-                position[ID]=0 # initial position                
-
+                position[ID]=0 # initial position                    
+    
 # turn relative
 def rel(ID,counts):
     global stepper
@@ -48,10 +48,10 @@ def rel(ID,counts):
     queue = [[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]] 
     while(position[ID] != destination):
         for i in range(0,4):            
-            pinName=stepper[ID][i+1] # index starts with 1             
+            pinName=stepper[ID][i] 
             value=queue[state[ID]][i]            
             pin.Out(pinName,value)
-        time.sleep(0.005)        
+        time.sleep(0.002)        
         if(counts>0):
             position[ID] += 1
             state[ID] += 1

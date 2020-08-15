@@ -1,7 +1,6 @@
 # threading class
 import time
 import json
-import RPi.GPIO as GPIO
 
 import pin
 import stepper
@@ -32,5 +31,4 @@ for data in settings:
     while rt.SoL():
         time.sleep(0.1)
         
-
-GPIO.cleanup()
+pin.cleanup()

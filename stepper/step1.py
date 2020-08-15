@@ -1,6 +1,5 @@
 import pin
 import time
-import RPi.GPIO as GPIO
 
 pin.load("config1.json")
 
@@ -15,13 +14,13 @@ while(position < destinationCount):
     # set all four pins
     for i in range(0,4):
         pin.Out(pinName[i],queue[state][i])
-    time.sleep(0.005)
+    time.sleep(0.002)
     state+=1
     if(state>3):
         state = 0
     position+=1
 
-GPIO.cleanup()
+pin.cleanup()
 
 
     

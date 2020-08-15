@@ -1,16 +1,12 @@
-[{
- "name":"in1",   
- "pin":14,
- "io":"out"
-},
 {
- "name":"in2",
- "pin":15,
- "io":"out"
-},
-{
- "name":"ena",
- "pin":18,
- "io":"out"
+"in1": {	
+	"pin": 14, 
+	"io": "out"
+	}, 
+"in2": {	
+	"pin": 15, 
+	"io": "out"},
+"ena": {	
+	"pin": 18, 
+	"io": "out"}	
 }
-]

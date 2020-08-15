@@ -19,15 +19,16 @@ def load(filename):
         # if something goes wrong
         print("Error loading config.json")
         exit(0)
-
-    # initialize all pins as
-    # in, out or pwm
+        
+    # store the items by name
+    # i.e. pinItems["switch"] =  ...
     global pinItems
-    for item in items:
-        pin = item["pin"]
-        # store the items by name
-        # i.e. pinItems["switch"] =  ...
-        pinItems[item["name"]] = item;
+    pinItems = items;
+    
+    # initialize all pins as
+    # in, out or pwm    
+    for name, item in items.items():
+        pin = item["pin"]       
         if(item["io"] == "in"):
             # configure an input
             GPIO.setup(pin, GPIO.IN, pull_up_down = GPIO.PUD_UP)
@@ -39,7 +40,7 @@ def load(filename):
         if(item["io"] == "pwm"):
             # configure pwm
             GPIO.setup(pin, GPIO.OUT)
-            pinItems[item["name"]]=GPIO.PWM(pin,500)            
+            pinItems[name]=GPIO.PWM(pin,500)            
 
 
 # GPIO input    
@@ -60,3 +61,6 @@ def Level(name,level):
     else:
         pinItems[name].start(0)
         pinItems[name].ChangeDutyCycle(level)
+
+def cleanup():
+    GPIO.cleanup()

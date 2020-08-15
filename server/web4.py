@@ -1,7 +1,6 @@
 # flask server
 from flask import Flask
 import sys
-import RPi.GPIO as GPIO
 import pin
 import control
 import os

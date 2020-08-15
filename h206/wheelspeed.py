@@ -1,8 +1,8 @@
 # wheel speed
-import RPi.GPIO as GPIO
 import pin
 import control
 import time
+import RPi.GPIO as GPIO
 
 pin.load("config1.json")
 control.load("config1.json")
@@ -27,4 +27,4 @@ GPIO.add_event_detect(4, GPIO.BOTH, callback=counter)
 
 control.move(100,0)
 time.sleep(5)
-GPIO.cleanup()
+pin.cleanup()

@@ -3,7 +3,7 @@ import json
 import pin
 
 motorCount = 6
-motor = [ [] for f in range(motorCount)] # contains the class Stepper
+motor = [ {} for f in range(motorCount)] # contains the class Stepper
 
 
 class Motor:
@@ -28,7 +28,7 @@ class Motor:
     def setDestination(self,destination):
         self.start=self.end
         self.end += destination
-        print("Star:",self.start," End: ", self.end) # debug        
+        print("Start:",self.start," End: ", self.end) # debug        
         self.factor = (self.end-self.start) / 100000        
         if self.factor <0:
             self.dir =-1
@@ -71,19 +71,18 @@ def load(filename):
   
     global stepper
  
-    for item in items:
-        pin = item["name"]
+    for name,item in items.items():        
         # store the items by name        
         if((item["stepperID"] or item["stepperID"]==0)\
            and (item["stepper1N"] or item["stepper1N"]==0)):
             ID=item["stepperID"]
             n = item["stepper1N"]            
             try:        
-                motor[ID].setOutput(n,pin)
+                motor[ID].setOutput(n,name)
             except:
                 # initialize
                 motor[ID] = Motor(0) # new class                
-                motor[ID].setOutput(n,pin)
+                motor[ID].setOutput(n,name)
                 
                 
                 

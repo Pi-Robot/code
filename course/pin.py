@@ -6,7 +6,7 @@ import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 
 # store all the items in dict after read json
-pinItems = {} 
+pinItems = {}
 
 # open the file
 def load():
@@ -19,23 +19,22 @@ def load():
         # if something goes wrong
         print("Error loading config.json")
         exit(0)
-
-    # initialize all pins as
-    # in, out or pwm
+    # store the items by name
+    # i.e. pinItems["switch"] =  ...
     global pinItems
-    for item in items:
-        pin = item["pin"]
-        # store the items by name
-        # i.e. pinItems["switch"] =  ...
-        pinItems[item["name"]] = item;
+    pinItems = items;
+    # initialize all pins as
+    # in, out or pwm    
+
+    for name, item in items.items():
+        pin = item["pin"]        
         if(item["io"] == "in"):
             # configure an input
             GPIO.setup(pin, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 
         if(item["io"] == "out"):
             # configure an output
-            GPIO.setup(pin, GPIO.OUT)
-
+            GPIO.setup(pin, GPIO.OUT)       
 
 # GPIO input    
 def In(name):
@@ -46,4 +45,7 @@ def In(name):
 def Out(name,state):
     global pinItems
     GPIO.output(pinItems[name]["pin"], state)
+
+def cleanup():
+    GPIO.cleanup()
    

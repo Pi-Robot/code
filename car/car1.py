@@ -1,4 +1,3 @@
-import RPi.GPIO as GPIO
 import pin
 import control
 import time
@@ -11,6 +10,5 @@ time.sleep(3)
 control.move(-100,90)
 time.sleep(3)
 
-
 # reset the GPIOs
-GPIO.cleanup()
+pin.cleanup()
